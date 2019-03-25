@@ -36,7 +36,9 @@
   `((,(regexp-opt '("namespace") 'words) . font-lock-reference-face)
     (,(regexp-opt '("entity" "service") 'words) . font-lock-builtin-face)
     ("entity\\ +\\([[:alnum:]]+\\)" . (1 font-lock-function-name-face))
-    (,(regexp-opt '("Integer" "String" "Boolean") 'words) . font-lock-type-face)))
+    (,(regexp-opt '("Integer" "Integer64" "Number" "Decimal" "Double"
+                    "String" "Boolean"
+                    "Date" "Time" "DateTime" "Timestamp") 'words) . font-lock-type-face)))
 
 
 ;;;###autoload
