@@ -43,5 +43,8 @@
   "Major mode for editing Core Data Services (CDS) files."
   (setq font-lock-defaults '(cds-highlights)))
 
+;;;###autoload
+(add-to-list 'auto-mode-alist (cons "\\.\\(cds\\|cdl\\|hdbdd\\)\\'" #'cds-mode))
+
 (provide 'cds-mode)
 ;;; cds-mode.el ends here
