@@ -39,6 +39,7 @@
     (,(regexp-opt '("Integer" "String" "Boolean") 'words) . font-lock-type-face)))
 
 
+;;;###autoload
 (define-derived-mode cds-mode prog-mode "cds"
   "Major mode for editing Core Data Services (CDS) files."
   (setq font-lock-defaults '(cds-highlights)))
