@@ -34,12 +34,11 @@
 
 (defvar cds-highlights
   `((,(regexp-opt '("namespace") 'words) . font-lock-reference-face)
-    (,(regexp-opt '("entity" "service") 'words) . font-lock-builtin-face)
+    (,(regexp-opt '("entity" "service" "enum" "virtual") 'words) . font-lock-builtin-face)
     ("entity\\ +\\([[:alnum:]]+\\)" . (1 font-lock-function-name-face))
-    (,(regexp-opt '("Integer" "Integer64" "Number" "Decimal" "Double"
-                    "String" "Boolean"
+    (,(regexp-opt '("Integer" "Integer64" "Number" "Decimal" "DecimalFloat" "Double"
+                    "UUID" "String" "LargeString" "Boolean" "Binary" "LargeBinary"
                     "Date" "Time" "DateTime" "Timestamp") 'words) . font-lock-type-face)))
-
 
 ;;;###autoload
 (define-derived-mode cds-mode prog-mode "cds"
