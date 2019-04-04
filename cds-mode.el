@@ -41,6 +41,7 @@
   `((,(regexp-opt '("namespace") 'words) . font-lock-reference-face)
     (,(regexp-opt '("entity" "service" "enum" "virtual") 'words) . font-lock-builtin-face)
     ("entity\\ +\\([[:alnum:]]+\\)" . (1 font-lock-function-name-face))
+    ("\\s-*//.*" . font-lock-comment-face)
     (,(regexp-opt '("Integer" "Integer64" "Number" "Decimal" "DecimalFloat" "Double"
                     "UUID" "String" "LargeString" "Boolean" "Binary" "LargeBinary"
                     "Date" "Time" "DateTime" "Timestamp") 'words) . font-lock-type-face)))
@@ -49,6 +50,13 @@
 (define-derived-mode cds-mode prog-mode "cds"
   "Major mode for editing Core Data Services (CDS) files."
   (setq font-lock-defaults '(cds-highlights))
+
+  (set (make-local-variable 'tab-width) 4)
+  (set (make-local-variable 'indent-tabs-mode) nil)
+
+  (set (make-local-variable 'comment-start) "// ")
+  (set (make-local-variable 'comment-start-skip) "//+\\s-*")
+
   (cds-imenu-setup))
 
 ;;;###autoload
