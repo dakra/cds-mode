@@ -32,6 +32,11 @@
 
 ;;; Code:
 
+(defun cds-imenu-setup ()
+  "Setup imenu for cds-mode."
+  (add-to-list 'imenu-generic-expression '("Services" "\\(^service +\\)\\(\\_<.+\\_>\\)" 2))
+  (add-to-list 'imenu-generic-expression '("Entities" "\\(^entity +\\)\\(\\_<.+\\_>\\)" 2)))
+
 (defvar cds-highlights
   `((,(regexp-opt '("namespace") 'words) . font-lock-reference-face)
     (,(regexp-opt '("entity" "service" "enum" "virtual") 'words) . font-lock-builtin-face)
@@ -43,7 +48,8 @@
 ;;;###autoload
 (define-derived-mode cds-mode prog-mode "cds"
   "Major mode for editing Core Data Services (CDS) files."
-  (setq font-lock-defaults '(cds-highlights)))
+  (setq font-lock-defaults '(cds-highlights))
+  (cds-imenu-setup))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist (cons "\\.\\(cds\\|cdl\\|hdbdd\\)\\'" #'cds-mode))
